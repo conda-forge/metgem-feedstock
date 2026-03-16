@@ -10,7 +10,7 @@ source:
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv
   entry_points:
     - MetGem = metgem.gui:run
@@ -90,12 +90,9 @@ outputs:
         - sqlalchemy
     test:
       requires:
-        - {{ cdt('mesa-libgl-devel') }}      # [linux]
-        - {{ cdt('mesa-libegl-devel') }}     # [linux]
-        - {{ cdt('mesa-dri-drivers') }}      # [linux]
-        - {{ cdt('libdrm-devel') }}          # [linux]
-        - {{ cdt('libglvnd-glx') }}          # [linux]
-        - {{ cdt('libglvnd-egl') }}          # [linux]
+        - libgl-devel                        # [linux]
+        - libegl-devel                       # [linux]
+        - libdrm                             # [linux]
       commands:
         - MetGem --help
 
